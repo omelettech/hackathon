@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {  createUserWithEmailAndPassword } from 'firebase/auth';
+import {  createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import {auth} from "../firebase/firebaseInit.tsx";
 /*import './Register.css';*/ // Import your CSS file
 
@@ -8,6 +8,19 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+
+
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            console.log('User signed in:', user);
+        } catch (error) {
+            setError(error.message);
+        }
+    };
+
 
     const handleRegister = async (e) => {
         e.preventDefault();
@@ -46,7 +59,11 @@ const Register = () => {
                 </div>
                 <button type="submit">Register</button>
             </form>
-            {error && <p className="error">{error}</p>}
+
+            <button onClick={handleGoogleSignIn}>Sign in with Google</button>
+
+            {/*{error && <p className="error">{error}</p>}*/}
+            {error && <p style={{ color: 'red' }}>{error}</p>} {/*this one is red so it better*/}
             {success && <p className="success">{success}</p>}
         </div>
     );
