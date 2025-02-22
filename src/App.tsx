@@ -10,6 +10,7 @@ import {signOut} from "firebase/auth";
 import {useAuthListener} from "./firebase/FIrebaseAuthStatus.tsx";
 import {useAuthState} from "react-firebase-hooks/auth";
 import LandingPage from './pages/LandingPage.tsx';
+import Upload from "./pages/Upload.tsx";
 
 // Example HomePage component
 const HomePage = () => {
@@ -68,6 +69,9 @@ function App() {
                             <li>
                                 <Link to={'/'} onClick={handleLogout}>Logout</Link>
                             </li>
+                            <li>
+                                <Link to={'/upload'}>Upload</Link>
+                            </li>
                         </ul>
                     </nav>
 
@@ -83,6 +87,7 @@ function App() {
                         />
                         {/* Handle invalid routes (404) */}
                         <Route path="*" element={<Navigate to="/" replace/>}/> {/* Redirect to home */}
+                        <Route path="/upload" element={<Upload/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
