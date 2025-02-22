@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {  createUserWithEmailAndPassword } from 'firebase/auth';
+import {auth} from "../firebase/firebaseInit.tsx";
 /*import './Register.css';*/ // Import your CSS file
 
 const Register = () => {
@@ -10,7 +11,6 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const auth = getAuth();
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
