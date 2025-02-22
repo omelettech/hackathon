@@ -1,0 +1,60 @@
+.floating-button {
+    position: fixed; /* Stay in place even when scrolling */
+    top: 20px; /* Adjust vertical position */
+    right: 20px; /* Adjust horizontal position */
+    background-color: #007bff; /* Example blue color */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Make it circular */
+    width: 60px; /* Adjust size */
+    height: 60px; /* Adjust size */
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.floating-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.floating-button:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+/* Optional: Add an icon */
+.floating-button i {
+    /* ... styles for your icon ... */
+}
+
+/* Example of positioning relative to a specific container */
+.container {
+    position: relative; /* Make the container relative */
+}
+
+.floating-button-container {
+    position: fixed; /* Position the button relative to the container */
+    top: 100px;
+    right: 100px;
+}
+
+/* Media query for smaller screens (example) */
+@media (max-width: 768px) {
+    .floating-button {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+/* Example using a SVG as icon */
+.floating-button svg {
+    width: 30px;
+    height: 30px;
+}

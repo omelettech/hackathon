@@ -3,6 +3,7 @@ import './App.css'
 import Login from "./pages/Login.tsx";
 import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
 import Feed from "./pages/Feed.tsx";
+import FloatingButton from "./components/FloatingButton.tsx";
 
 // Example HomePage component
 const HomePage = () => {
@@ -29,6 +30,8 @@ function App() {
     return (
 
         <>
+           <FloatingButton text={"H"} onPress={() => console.log("it works")}/>
+
             <BrowserRouter>
                 <div>
                     <nav>
