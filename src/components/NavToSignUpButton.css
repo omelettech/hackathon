@@ -1,0 +1,22 @@
+.nav-to-signup-button {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+  }
+  
+  .nav-to-signup-button:hover {
+    filter: brightness(90%);
+  }
+  
+  /* Optional: Different button colors */
+  .nav-to-signup-button {
+    background-color: #3C966D;
+    color: #FFFF;
+  }

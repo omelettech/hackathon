@@ -9,6 +9,7 @@ import {auth} from "./firebase/firebaseInit.tsx";
 import {signOut} from "firebase/auth";
 import {useAuthListener} from "./firebase/FIrebaseAuthStatus.tsx";
 import {useAuthState} from "react-firebase-hooks/auth";
+import LandingPage from './pages/LandingPage.tsx';
 
 // Example HomePage component
 const HomePage = () => {
@@ -71,7 +72,8 @@ function App() {
                     </nav>
 
                     <Routes>
-                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/feed" element={<Feed/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path={"/register"} element={<Register/>}/>
                         <Route path={'/feed'} element={
