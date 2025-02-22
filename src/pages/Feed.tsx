@@ -51,10 +51,13 @@ const Feed = () => {
 
 
     return (
+
         <div className="feed-container">
             {items.map((item) => (
+
                 <div key={item.id} className="card">
-                    {item.imageUrl && <img src={item.imageUrl} alt={item.title} className="card-image" />}
+                    {/*{item.imageUrl && <img src={item.imageUrl} alt={item.title} className="card-image" />}*/}
+                     <img src="src/assets/Img/Wab.png" height={100} width={100} alt={item.title} className="card-image" />
                     <div className="card-content">
                         <h3 className="card-title">{item.title}</h3>
                         <p className="card-text">{item.content}</p>
@@ -65,6 +68,8 @@ const Feed = () => {
             {!hasMore && <div className="no-more">No more items to load.</div>}
         </div>
     );
+
+
 };
 
 export default Feed;
