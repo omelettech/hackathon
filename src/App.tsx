@@ -5,6 +5,7 @@ import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
 import Feed from "./pages/Feed.tsx";
 import FloatingButton from "./components/FloatingButton.tsx";
 import Register from "./pages/Register.tsx";
+import LandingPage from './pages/LandingPage.tsx';
 
 // Example HomePage component
 const HomePage = () => {
@@ -52,7 +53,8 @@ function App() {
                     </nav>
 
                     <Routes>
-                        <Route path="/" element={<Feed/>}/>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/feed" element={<Feed/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path={"/register"} element={<Register/>}/>
                         {/*<Route path="/dashboard" element={*/}
