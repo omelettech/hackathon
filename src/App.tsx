@@ -5,6 +5,10 @@ import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
 import Feed from "./pages/Feed.tsx";
 import FloatingButton from "./components/FloatingButton.tsx";
 import Register from "./pages/Register.tsx";
+import {auth} from "./firebase/firebaseInit.tsx";
+import {signOut} from "firebase/auth";
+import {useAuthListener} from "./firebase/FIrebaseAuthStatus.tsx";
+import {useAuthState} from "react-firebase-hooks/auth";
 import LandingPage from './pages/LandingPage.tsx';
 
 // Example HomePage component
@@ -16,25 +20,34 @@ const HomePage = () => {
 
 
 // Protected Route Component (Important!)
-const ProtectedRoute = ({children}) => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated'); // Check authentication status
+function ProtectedRoute({children}) {
+    // a custom hook to keep track of user's auth status
+    const {loggedIn, checkingStatus} = useAuthListener();
+    const [user, loading] = useAuthState(auth);
 
-    if (isAuthenticated) {
-        return children; // User is logged in, allow access
-    } else {
-        return <Navigate to="/login" replace/>; // Redirect to login if not authenticated
-    }
+    if (loading) return <p>Loading...</p>; // Show a loading state
+
+    return user ? children : <Navigate to="/login"/>;
 };
 
 
-
 function App() {
-    const [count, setCount] = useState(0)
+
+
+    const handleLogout = () => {
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log("Signed out successfully")
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
+
 
     return (
 
         <>
-           <FloatingButton text={"H"} onPress={() => console.log("it works")}/>
+            <FloatingButton text={"H"} onPress={() => console.log("it works")}/>
 
             <BrowserRouter>
                 <div>
@@ -49,6 +62,12 @@ function App() {
                             <li>
                                 <Link to="/register">Register</Link>
                             </li>
+                            <li>
+                                <Link to="/feed">Feed</Link>
+                            </li>
+                            <li>
+                                <Link to={'/'} onClick={handleLogout}>Logout</Link>
+                            </li>
                         </ul>
                     </nav>
 
@@ -57,11 +76,12 @@ function App() {
                         <Route path="/feed" element={<Feed/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path={"/register"} element={<Register/>}/>
-                        {/*<Route path="/dashboard" element={*/}
-                        {/*    <ProtectedRoute> /!* Protect this route *!/*/}
-                        {/*        <Dashboard />*/}
-                        {/*    </ProtectedRoute>*/}
-                        {/*} />*/}
+                        <Route path={'/feed'} element={
+                            <ProtectedRoute>
+                                <Feed/>
+                            </ProtectedRoute>
+                        }
+                        />
                         {/* Handle invalid routes (404) */}
                         <Route path="*" element={<Navigate to="/" replace/>}/> {/* Redirect to home */}
                     </Routes>

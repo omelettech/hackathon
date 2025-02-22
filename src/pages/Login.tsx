@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import {auth} from "../firebase/firebaseInit.tsx";
+import {useNavigate} from "react-router-dom";
 function LoginPage() {
-    const [username, setUsername] = useState('');
+    const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loggedIn, setLoggedIn] = useState(false); // Track login status
@@ -10,25 +14,22 @@ function LoginPage() {
         e.preventDefault();
 
         // Basic validation (you should add more robust checks)
-        if (!username || !password) {
+        if (!email || !password) {
             setError('Username and password are required.');
             return;
         }
 
         // Simulate authentication (replace with your actual login logic)
-        if (username === 'testuser' && password === 'password') {
-            setLoggedIn(true);
-            setError(''); // Clear any previous errors
-            // Redirect or perform actions after successful login
-            console.log('Login successful!');
-        } else {
-            setError('Invalid username or password.');
-        }
+        signInWithEmailAndPassword(auth, email, password).then((userCredentials)=>{
+            const user = userCredentials.user
+            navigate("/")
+        })
+            .catch(e=>console.error(e))
     };
 
     if (loggedIn) {
         // Redirect or display a welcome message, etc.
-        return <div>Welcome, {username}! You are logged in.</div>;
+        return <div>Welcome, {email}! You are logged in.</div>;
     }
 
     return (
@@ -41,8 +42,8 @@ function LoginPage() {
                     <input
                         type="text"
                         id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
