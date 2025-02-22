@@ -3,14 +3,13 @@ import './App.css'
 import Login from "./pages/Login.tsx";
 import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
 import Feed from "./pages/Feed.tsx";
-import FloatingButton from "./components/FloatingButton.tsx";
 import Register from "./pages/Register.tsx";
 import {auth} from "./firebase/firebaseInit.tsx";
 import {signOut} from "firebase/auth";
 import {useAuthListener} from "./firebase/FIrebaseAuthStatus.tsx";
 import {useAuthState} from "react-firebase-hooks/auth";
 import LandingPage from './pages/LandingPage.tsx';
-import Upload from "./pages/Upload.tsx";
+import FloatingButton from "./components/FloatingButton.tsx";
 
 // Example HomePage component
 const HomePage = () => {
@@ -48,7 +47,7 @@ function App() {
     return (
 
         <>
-            <FloatingButton text={"H"} onPress={() => console.log("it works")}/>
+            <FloatingButton onPress={() => console.log("it works")}/>
 
             <BrowserRouter>
                 <div>
@@ -69,9 +68,7 @@ function App() {
                             <li>
                                 <Link to={'/'} onClick={handleLogout}>Logout</Link>
                             </li>
-                            <li>
-                                <Link to={'/upload'}>Upload</Link>
-                            </li>
+
                         </ul>
                     </nav>
 
@@ -87,7 +84,6 @@ function App() {
                         />
                         {/* Handle invalid routes (404) */}
                         <Route path="*" element={<Navigate to="/" replace/>}/> {/* Redirect to home */}
-                        <Route path="/upload" element={<Upload/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>

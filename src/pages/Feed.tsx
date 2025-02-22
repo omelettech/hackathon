@@ -23,7 +23,6 @@ const Feed = () => {
     }
 
     const downloadImage = (id: string) => {
-        storage.getFilePreview(BUCKET_ID, id)
         console.log("image asds", storage.getFilePreview(BUCKET_ID, id))
         return storage.getFilePreview(BUCKET_ID, id)
 
@@ -37,7 +36,9 @@ const Feed = () => {
             imageUrl: pic[i], // Random image URL
         }));
     };
-
+    useEffect(() => {
+        getPicId().then(setItems)
+    }, []);
     const loadMoreItems = async () => {
         if (loading || !hasMore) return; // Don't load if already loading or no more items
 
@@ -56,27 +57,26 @@ const Feed = () => {
     };
 
 
-    useEffect(() => {
-        getPicId().then(setItems)
-
-        const handleScroll = () => {
-            if (
-                window.innerHeight + document.documentElement.scrollTop >=
-                document.scrollingElement.scrollHeight - 100 // Trigger load a bit before reaching the bottom
-            ) {
-                loadMoreItems();
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll); // Clean up event listener
-    }, []); // Empty dependency array ensures this runs only once on mount and unmount
+    // useEffect(() => {
+    //     getPicId().then(setItems)
+    //
+    //     const handleScroll = () => {
+    //         if (
+    //             window.innerHeight + document.documentElement.scrollTop >=
+    //             document.scrollingElement.scrollHeight - 100 // Trigger load a bit before reaching the bottom
+    //         ) {
+    //             loadMoreItems();
+    //         }
+    //     };
+    //
+    //     // window.addEventListener('scroll', handleScroll);
+    //     // return () => window.removeEventListener('scroll', handleScroll); // Clean up event listener
+    // }, []); // Empty dependency array ensures this runs only once on mount and unmount
 
 
     return (
 
         <div className="feed-container">
-            {console.log({getPic: getPicId})};
 
             {items.map((item) => (
 
