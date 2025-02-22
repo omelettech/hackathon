@@ -4,6 +4,7 @@ import Login from "./pages/Login.tsx";
 import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
 import Feed from "./pages/Feed.tsx";
 import FloatingButton from "./components/FloatingButton.tsx";
+import Register from "./pages/Register.tsx";
 
 // Example HomePage component
 const HomePage = () => {
@@ -24,6 +25,8 @@ const ProtectedRoute = ({children}) => {
     }
 };
 
+
+
 function App() {
     const [count, setCount] = useState(0)
 
@@ -42,13 +45,16 @@ function App() {
                             <li>
                                 <Link to="/login">Login</Link>
                             </li>
-
+                            <li>
+                                <Link to="/register">Register</Link>
+                            </li>
                         </ul>
                     </nav>
 
                     <Routes>
                         <Route path="/" element={<Feed/>}/>
                         <Route path="/login" element={<Login/>}/>
+                        <Route path={"/register"} element={<Register/>}/>
                         {/*<Route path="/dashboard" element={*/}
                         {/*    <ProtectedRoute> /!* Protect this route *!/*/}
                         {/*        <Dashboard />*/}
