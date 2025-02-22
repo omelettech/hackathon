@@ -5,12 +5,24 @@ export type FloatingButtonProps={
     text:string
     onPress:()=>void
 }
-function FloatingButton({text,onpress}:FloatingButtonProps){
+function FloatingButton({text,onPress}:FloatingButtonProps){
     return(
-        <button onClick={onpress} className={"floating-button"}>
-            {text}
 
-        </button>
+        <div onClick={onPress} className="floating-button">
+            {/* Hidden File Input */}
+            <input
+                accept="image/*"
+                id="icon-button-file"
+                type="file"
+                capture="environment"
+                className="file-input"
+            />
+
+            {/* Camera Icon */}
+            <label htmlFor="icon-button-file" className="camera-icon">
+                <i className="fas fa-camera"></i>
+            </label>
+        </div>
     )
 }
 
