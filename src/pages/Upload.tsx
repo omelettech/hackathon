@@ -23,35 +23,33 @@ const Upload = () => {
     const [productName, setproductName] = useState<string>("")
     const { e } = location.state || {}; // Handle undefined case
 
-    useEffect(() => {
-        const handleImageAnalysis = async () =>{
-            console.log("Sending...")
-            const response = sendImageToModel(file)
 
-            response.then(r=>console.log(r))
-        }
+    const addImageToAppwrite = async () =>{
+        console.log("Adding to appwrite",file)
+        const response = await storage.createFile(BUCKET_ID, file.name, file);
+        // console.log(response)
+        const imgUrl = storage.getFilePreview(BUCKET_ID,response.$id)
+        return imgUrl
+    }
+
+    useEffect(() => {
+
+
         if (file){
-            handleImageAnalysis()
+            (async function() {
+
+                const url=await addImageToAppwrite();
+                console.log("Sending to model")
+                const data = await sendImageToModel(url)
+
+            })();
 
         }
 
     }, [file]);
 
     const user = getAuth();
-    const addData = async (qul_list: string[], qunt:number, img_url: string) =>{
-        console.log( user.currentUser?.email)
-        try {
-            const docRef = await addDoc(collection(db, "Posts"),{
-                img_url: img_url,
-                qul_list: qul_list,
-                qunt: qunt,
-                productName: productName,
-                uploaded_by: user.currentUser?.email || " "
-            });
-        }catch (error){
-            console.error("Error adding document: ", error);
-        }
-    }
+
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if(event.target?.files[0] === null || event.target?.files[0] === undefined){
@@ -74,6 +72,8 @@ const Upload = () => {
         try {
             const response = await sendImageToModel(e)
             // const qualityList = response.quality
+            //TODO: add data to firestore
+
             // {addData([], 3, params)}
             console.log("imagemodel response",response)
 
