@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './App.css'
 import Login from "./pages/Login.tsx";
 import {BrowserRouter, Link, Navigate, Route, Routes} from 'react-router-dom';
@@ -8,7 +8,6 @@ import {auth} from "./firebase/firebaseInit.tsx";
 import {signOut} from "firebase/auth";
 import {useAuthState} from "react-firebase-hooks/auth";
 import LandingPage from './pages/LandingPage.tsx';
-import FloatingButton from "./components/FloatingButton.tsx";
 import Upload from "./pages/Upload.tsx";
 import Checkout from "./pages/Checkout.tsx";
 
@@ -33,7 +32,7 @@ function ProtectedRoute({children}) {
 
 function App() {
 
-
+    const [user] = useAuthState(auth)
     const handleLogout = () => {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -55,25 +54,19 @@ function App() {
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
-                            <li>
-                                <Link to="/login">Login</Link>
-                            </li>
-                            <li>
-                                <Link to="/register">Register</Link>
-                            </li>
+
+
                             <li>
                                 <Link to="/feed">Feed</Link>
                             </li>
                             <li>
                                 <Link to="/upload">Upload</Link>
                             </li>
+
                             <li>
                                 <Link to={'/'} onClick={handleLogout}>Logout</Link>
                             </li>
 
-                            <li>
-                                <Link to={'/checkout'}>Checkout</Link>
-                            </li>
 
                         </ul>
                     </nav>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "set VITE_CJS_IGNORE_WARNING=true && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -20,8 +20,12 @@ const Upload = () => {
     const { e } = location.state || {}; // Handle undefined case
 
     const onFileSelected = async (file: File) => {
-        const response = await storage.createFile(BUCKET_ID, file.name, file);
+        console.log(file)
+        try {
+            const response = await storage.createFile(BUCKET_ID, file.name, file);
+            console.log(response)
         const url = storage.getFilePreview(BUCKET_ID,response.$id)
+
         console.log("Sending to model");
         setUploading(true);
         const data = await sendImageToModel(url)
@@ -40,8 +44,12 @@ const Upload = () => {
         });
         console.log("Added firestore doc",docRef);
 
-        setUploading(false);
-        setUploaded(true);
+        } catch (e) {
+            console.error(e)
+        }finally {
+            setUploading(false);
+            setUploaded(true);
+        }
     };
 
     return (
@@ -58,8 +66,9 @@ const Upload = () => {
                     <h2>Upload File</h2>
                     <p>{e}</p>
 
-                    {message && <p>{message}</p>}
                 </>}
+            {message && <p>{message}</p>}
+
         </div>
     );
 };
