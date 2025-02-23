@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "set VITE_CJS_IGNORE_WARNING=true && vite build",
+    "build_linux": "TS_NODE_IGNORE_WARNINGS=true VITE_CJS_IGNORE_WARNING=true vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
