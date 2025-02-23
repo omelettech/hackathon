@@ -12,8 +12,8 @@ export const sendImageToModel = async (image_url:string)=>{
             image_path:image_url
         }),
     })
-    console.log("await",await resp.json())
-    return await resp.json();
+    const jsonResponse = await resp.json()
+    return jsonResponse;
 }
 
 export const getAllPosts = async (collectionName: string, currentUserEmail: string) => {

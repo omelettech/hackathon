@@ -41,6 +41,18 @@ const Upload = () => {
                 const url=await addImageToAppwrite();
                 console.log("Sending to model")
                 const data = await sendImageToModel(url)
+                console.log("data",data.quality_name,data)
+
+                const docRef = await addDoc(collection(db, "Posts"),
+                    {
+                        expiration_date: data.expiration_day,
+                        img_url: url,
+                        price:data.price,
+                        productName:productName || "New product",
+                        quality:data.quality_name
+                    }
+                    );
+                console.log("Added firestore doc",docRef)
 
             })();
 
