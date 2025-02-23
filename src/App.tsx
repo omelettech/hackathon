@@ -10,6 +10,7 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import LandingPage from './pages/LandingPage.tsx';
 import FloatingButton from "./components/FloatingButton.tsx";
 import Upload from "./pages/Upload.tsx";
+import Checkout from "./pages/Checkout.tsx";
 
 // Example HomePage component
 const HomePage = () => {
@@ -71,6 +72,10 @@ function App() {
                                 <Link to={'/'} onClick={handleLogout}>Logout</Link>
                             </li>
 
+                            <li>
+                                <Link to={'/checkout'}>Checkout</Link>
+                            </li>
+
                         </ul>
                     </nav>
 
@@ -79,7 +84,7 @@ function App() {
                         <Route path="/login" element={<Login/>}/>
                         <Route path={"/register"} element={<Register/>}/>
                         <Route path={"/upload"} element={<Upload/>}/>
-
+                        <Route path={"/checkout"} element={<Checkout/>}/>
                         <Route path={'/feed'} element={
                             <ProtectedRoute>
                                 <Feed/>
