@@ -54,15 +54,12 @@ function App() {
                             <li>
                                 <Link to="/">Home</Link>
                             </li>
-
-
                             <li>
                                 <Link to="/feed">Feed</Link>
                             </li>
                             <li>
                                 <Link to="/upload">Upload</Link>
                             </li>
-
                             <li>
                                 <Link to={'/'} onClick={handleLogout}>Logout</Link>
                             </li>
@@ -77,11 +74,7 @@ function App() {
                         <Route path={"/register"} element={<Register/>}/>
                         <Route path={"/upload"} element={<Upload/>}/>
                         <Route path={"/checkout"} element={<Checkout/>}/>
-                        <Route path={'/feed'} element={
-                            <ProtectedRoute>
-                                <Feed/>
-                            </ProtectedRoute>
-                        }
+                        <Route path={'/feed'} element={<Feed/>}
                         />
                         {/* Handle invalid routes (404) */}
                         <Route path="*" element={<Navigate to="/" replace/>}/> {/* Redirect to home */}
