@@ -1,7 +1,6 @@
 ﻿export interface Item {
     price: number;
     expirationDate: string;
-    productName: string;
     quality: string;
     imgUrl: string;
 }
@@ -15,7 +14,7 @@ export default function ItemCard({
 
     return (
         <div className="card d-flex flex-column align-items-center">
-            <img src={imgUrl} alt={productName} className="card-image" width={100} />
+            {imgUrl && <img src={imgUrl} alt={productName} className="card-image" width={100} />}
             <div className="card-content">
                 <h3 className="card-title">{productName}</h3>
                 <p className="card-text">Price: ${price}</p>
