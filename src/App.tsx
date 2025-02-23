@@ -46,7 +46,6 @@ function App() {
     return (
 
         <>
-            <FloatingButton onPress={() => console.log("it works")}/>
 
             <BrowserRouter>
                 <div>
