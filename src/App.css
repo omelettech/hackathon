@@ -97,6 +97,8 @@ nav>ul a:hover {
   color: #f4a261;
 }
 
+
+
 /* Responsive Navbar */
 @media (max-width: 768px) {
   nav {
