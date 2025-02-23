@@ -66,6 +66,7 @@ const Register = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>} {/*this one is red so it better*/}
             {success && <p className="success">{success}</p>}
         </div>
+
     );
 };
 
