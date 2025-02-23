@@ -47,3 +47,71 @@
 .read-the-docs {
   color: #888;
 }
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  padding: 15px 20px;
+  position: fixed;
+  top:0;
+  left:0
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav>ul {
+  list-style: none;
+  flex-direction: row;
+  display: flex;
+}
+
+nav>ul li {
+  margin: 0 15px;
+}
+
+nav>ul a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+nav>ul a:hover {
+  color: #f4a261;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav>ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:5px;
+    margin-top: 10px;
+  }
+
+  nav>ul li {
+    margin: 5px 0;
+  }
+}
