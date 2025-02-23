@@ -15,7 +15,6 @@ const Register = () => {
         try {
             const result = await signInWithPopup(auth, provider);
             const user = result.user;
-            console.log('User signed in:', user);
         } catch (error) {
             setError(error.message);
         }

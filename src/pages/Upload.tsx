@@ -20,16 +20,13 @@ const Upload = () => {
     const { e } = location.state || {}; // Handle undefined case
 
     const onFileSelected = async (file: File) => {
-        console.log(file)
         try {
             const response = await storage.createFile(BUCKET_ID, file.name, file);
-            console.log(response)
         const url = storage.getFilePreview(BUCKET_ID,response.$id)
 
         console.log("Sending to model");
         setUploading(true);
         const data = await sendImageToModel(url)
-        console.log("data",data.quality_name,data)
 
         const confirmed = confirm(`Estimated expiration date: ${data.expiration_day}, Price: ${data.price}`);
 
@@ -42,7 +39,6 @@ const Upload = () => {
             price: data.price,
             quality: data.quality_name
         });
-        console.log("Added firestore doc",docRef);
 
         } catch (e) {
             console.error(e)

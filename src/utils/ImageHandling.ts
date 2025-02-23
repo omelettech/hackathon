@@ -27,7 +27,6 @@ export const getAllPosts = async (collectionName: string, currentUserEmail: stri
             id: doc.id,
             ...doc.data(),
         }));
-        console.log(data)
         return data;
 
     } catch (error) {
