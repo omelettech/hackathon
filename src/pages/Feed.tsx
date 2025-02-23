@@ -38,8 +38,7 @@ const Feed = () => {
             ? <Loading />
             : items.map((item, i) => <ItemCard
                 key={i}
-                imgUrl={item.img_url}
-                productName={item.productName}
+                imgUrl={item.imgUrl}
                 price={item.price}
                 expirationDate={item.expirationDate}
                 quality={item.quality} />)}
