@@ -42,7 +42,7 @@ const Upload = () => {
         console.log( user.currentUser?.email)
         try {
             const docRef = await addDoc(collection(db, "Posts"),{
-                img_url: "https://cloud.appwrite.io/v1/storage/buckets/67b9ec75001b90f35dbe/files/UML_project.jpg/view?project=67b9e650002a4536f7db&mode=admin",
+                img_url: img_url,
                 qul_list: qul_list,
                 qunt: qunt,
                 productName: productName,
