@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# 🍏 SeeFruits
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌱 Reducing Fruit Waste, One Bite at a Time
+SeeFruits is a platform designed to minimize fruit waste by classifying fruits based on their quality and connecting consumers, farmers, and businesses to make the best use of surplus or imperfect produce.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+### **Frontend**
+- **React + TypeScript + Vite** → For a fast, modern, and scalable user interface.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **Backend**
+- **FastAPI** → To handle API requests and integrate with external services.
+- **Google Gemini API** → For AI-powered insights and recommendations.
 
-- Configure the top-level `parserOptions` property like this:
+### **Storage & Authentication**
+- **AppWrite** → To store and manage fruit images.
+- **Firebase Authentication** → For secure user authentication.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🔥 Features
+- **Fruit Classification System**: Categorizes fruits into four levels: Prime Pick, Second Bite, Perfectly Imperfect, and ReFruit.
+- **AI-Powered Insights**: Uses Google Gemini Vision to analyze fruit conditions and suggest optimal uses.
+- **Photo Upload & Analysis**: Users can upload images of their fruits for AI assessment.
+- **Sustainable Practices**: Provides DIY ideas for reusing imperfect fruits.
+- **Secure Authentication**: Firebase ensures a seamless and secure login experience.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+
+## 🌍 Contribution & Future Scope
+We welcome contributions to improve SeeFruits! Future enhancements include:
+- **Marketplace for Ugly Fruits**
+- **Recipe Suggestions Based on Available Fruits**
+- **Expanded AI Fruit Analysis**
+
+---
+## 🧑‍💻 Team Members
+We're students from George Brown College, inspired and connected by the Silicon Valley show.
+- Sokmontrey Sythat
+- Awsaf Fida Mahmud
+- Samuel Browne
+- Chau Minh Truong
+
+## 📜 License
+MIT License © 2025 SeeFruits Team
+
